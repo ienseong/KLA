@@ -191,7 +191,8 @@ module sub_pixel_delay
 
                 else if(sample_in_v_d1=='b1) begin
                     // if(k==0) begin
-                    if(j==0) begin
+                    // if(j==0) begin
+                    if(j==0 && k_d2==1) begin
                         A_pix[j]      <= sample_d_in[0];
                         D_pix_prev[j] <= sample_d_in[0];
                         D_pix_next[j] <= sample_d_in[1];
@@ -243,8 +244,11 @@ module sub_pixel_delay
                             end
 
                             3: begin
-                                sample_in_prev_idx3[j]<=sample_d_in[j-1];        
-                                D_pix_prev[j] <= sample_in_prev_idx3[j-1];
+                                // sample_in_prev_idx3[j]<=[j-1];        
+                                // D_pix_prev[j] <= sample_in_prev_idx3[j-1];
+                                // D_pix_prev[j] <= sample_in_temp[j-1];
+                                
+                                D_pix_prev[j] <= sample_d_in[j-1];
                                 D_pix_next[j] <= sample_in[0];
                                 
                             end
